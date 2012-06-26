@@ -35,6 +35,11 @@ class EtuDev_Calendar_HTMLForm {
 	protected function checkData(){
 		$this->id = $this->id ?: $this->name;
 		$this->value = (EtuDev_Util_Date::isZeroDate($this->value)) ? '' : $this->value;
+		$c = $this->calendar_control;
+		if($c){
+			$this->min_date = $this->min_date ?: $c->getMinDate();
+			$this->max_date = $this->max_date ?: $c->getMaxDate();
+		}
 	}
 
 	public function render() {
@@ -73,7 +78,7 @@ class EtuDev_Calendar_HTMLForm {
 		}
 
 		$html .= '
-		<script type="text/javascript">$(document).ready(function() {$("#' . $this->id . '_input").datepicker({ showButtonPanel: true, showOn: "focus", dateFormat: "' . str_replace(' ', EtuDev_Util_Date::DATE_FORMAT_INPUT_SEPARATOR, static::$formats[EtuDev_Util_Date::DATE_FORMAT_INPUT]) . '", altField: "#' . $this->id . '", altFormat: "yy-mm-dd", changeYear: true, changeMonth: true, onClose: function(dateText, int) { if($("#' . $this->id . '_input").val() == "") { $("#' . $this->id . '").val(""); } } }); }); </script>';
+		<script type="text/javascript">$(document).ready(function() {$("#' . $this->id . '_input").datepicker({ showButtonPanel: true, showOn: "focus", dateFormat: "' . str_replace(' ', EtuDev_Util_Date::getFormatInput(), static::$formats[EtuDev_Util_Date::getFormatInput()]) . '", altField: "#' . $this->id . '", altFormat: "yy-mm-dd", changeYear: true, changeMonth: true, onClose: function(dateText, int) { if($("#' . $this->id . '_input").val() == "") { $("#' . $this->id . '").val(""); } } }); }); </script>';
 
 
 		return $html;
