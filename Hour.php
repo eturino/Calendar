@@ -470,9 +470,9 @@ class EtuDev_Calendar_Hour {
 	 * @return array
 	 */
 	public function toArray($withId = true) {
-		$a = array('i' => $this->getInit() ? $this->getInit() : null,
-				   'e' => $this->getEnd() ? $this->getEnd() : null,
-				   'p' => $this->getPeriod() ? $this->getPeriod() : 0,
+		$a = array('i'  => $this->getInit() ? $this->getInit() : null,
+				   'e'  => $this->getEnd() ? $this->getEnd() : null,
+				   'p'  => $this->getPeriod() ? $this->getPeriod() : 0,
 				   'ei' => $this->getEndIncluded());
 
 		if ($withId) {
@@ -501,12 +501,12 @@ class EtuDev_Calendar_Hour {
 		$ins = array();
 		if (!self::getCalendarHour(self::DEFAULT_INSTANCE_ID_MORNING)) {
 			$a = array('id' => self::DEFAULT_INSTANCE_ID_MORNING,
-					   'i' => '13:00',
-					   'e' => '15:30',
-					   'p' => 30,
+					   'i'  => '13:00',
+					   'e'  => '15:30',
+					   'p'  => 30,
 					   'ei' => true,
-					   'f' => static::$lang_lunch_anytime,
-					   'n' => static::$lang_lunch_title);
+					   'f'  => static::$lang_lunch_anytime,
+					   'n'  => static::$lang_lunch_title);
 
 			$x = self::getOrNewCalendarHour(self::DEFAULT_INSTANCE_ID_MORNING, $a);
 		} else {
@@ -521,12 +521,12 @@ class EtuDev_Calendar_Hour {
 
 		if (!self::getCalendarHour(self::DEFAULT_INSTANCE_ID_EVENING)) {
 			$a = array('id' => self::DEFAULT_INSTANCE_ID_EVENING,
-					   'i' => '19:30',
-					   'e' => '23:00',
-					   'p' => 30,
+					   'i'  => '19:30',
+					   'e'  => '23:00',
+					   'p'  => 30,
 					   'ei' => true,
-					   'f' => static::$lang_dinner_anytime,
-					   'n' => static::$lang_lunch_title);
+					   'f'  => static::$lang_dinner_anytime,
+					   'n'  => static::$lang_lunch_title);
 			$x = self::getOrNewCalendarHour(self::DEFAULT_INSTANCE_ID_EVENING, $a);
 		} else {
 			$x = self::getCalendarHour(self::DEFAULT_INSTANCE_ID_EVENING);

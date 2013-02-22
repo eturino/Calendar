@@ -245,7 +245,7 @@ CalendarControl.prototype.applyToDatepicker = function () {
 
 	var cc = this;
 	var o = {
-		beforeShowDay:function (date) {
+		beforeShowDay: function (date) {
 			return cc.datePickerBeforeShowDay(date);
 		}
 	};

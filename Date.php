@@ -190,7 +190,7 @@ class EtuDev_Calendar_Date {
 
 	/**
 	 * @param EtuDev_Calendar_Hour|string $id cch object or its ID (in that case we look for it using static functions)
-	 * @param array                      $a
+	 * @param array                       $a
 	 *
 	 * @return EtuDev_Calendar_Date
 	 * @uses EtuDev_Calendar_Hour::getId()

@@ -352,7 +352,7 @@ class EtuDev_Calendar_Control {
 
 	/**
 	 *
-	 * @param string              $key date string
+	 * @param string               $key date string
 	 * @param EtuDev_Calendar_Date $ds
 	 *
 	 * @return EtuDev_Calendar_Control
@@ -379,7 +379,7 @@ class EtuDev_Calendar_Control {
 	/**
 	 * alias setHourStatus()
 	 *
-	 * @param string              $id id of the CalendarHour
+	 * @param string               $id id of the CalendarHour
 	 * @param EtuDev_Calendar_Hour $hs
 	 *
 	 * @return EtuDev_Calendar_Control
@@ -418,7 +418,7 @@ class EtuDev_Calendar_Control {
 
 	/**
 	 *
-	 * @param string              $id id of the CalendarHour
+	 * @param string               $id id of the CalendarHour
 	 * @param EtuDev_Calendar_Hour $hs
 	 *
 	 * @return EtuDev_Calendar_Control
@@ -717,7 +717,7 @@ class EtuDev_Calendar_Control {
 
 		$defs     = EtuDev_Calendar_Hour::getDefaultCalendarHours(false);
 		$defs_ids = array();
-		$hours     = array();
+		$hours    = array();
 		/** @var $cch EtuDev_Calendar_Hour */
 		foreach ($defs as $cch) {
 			$defs_ids[] = $cch->getId();

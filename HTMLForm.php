@@ -32,13 +32,13 @@ class EtuDev_Calendar_HTMLForm {
 	 */
 	protected $calendar_control;
 
-	protected function checkData(){
-		$this->id = $this->id ?: $this->name;
+	protected function checkData() {
+		$this->id    = $this->id ? : $this->name;
 		$this->value = (EtuDev_Util_Date::isZeroDate($this->value)) ? '' : $this->value;
-		$c = $this->calendar_control;
-		if($c){
-			$this->min_date = $this->min_date ?: $c->getMinDate();
-			$this->max_date = $this->max_date ?: $c->getMaxDate();
+		$c           = $this->calendar_control;
+		if ($c) {
+			$this->min_date = $this->min_date ? : $c->getMinDate();
+			$this->max_date = $this->max_date ? : $c->getMaxDate();
 		}
 	}
 
@@ -96,6 +96,7 @@ class EtuDev_Calendar_HTMLForm {
 
 	/**
 	 * @param \DateTime|int|string $max_date
+	 *
 	 * @return EtuDev_Calendar_HTMLForm
 	 */
 	public function setMaxDate($max_date) {
@@ -112,6 +113,7 @@ class EtuDev_Calendar_HTMLForm {
 
 	/**
 	 * @param \DateTime|int|string $min_date
+	 *
 	 * @return EtuDev_Calendar_HTMLForm
 	 */
 	public function setMinDate($min_date) {
@@ -128,6 +130,7 @@ class EtuDev_Calendar_HTMLForm {
 
 	/**
 	 * @param string $name
+	 *
 	 * @return EtuDev_Calendar_HTMLForm
 	 */
 	public function setName($name) {
@@ -144,6 +147,7 @@ class EtuDev_Calendar_HTMLForm {
 
 	/**
 	 * @param \DateTime|string $value
+	 *
 	 * @return EtuDev_Calendar_HTMLForm
 	 */
 	public function setValue($value) {
@@ -175,7 +179,7 @@ class EtuDev_Calendar_HTMLForm {
 		return $this->calendar_control;
 	}
 
-	public function __toString(){
+	public function __toString() {
 		return $this->render();
 	}
 
