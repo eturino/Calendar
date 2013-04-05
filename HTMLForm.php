@@ -45,9 +45,17 @@ class EtuDev_Calendar_HTMLForm {
 	public function render() {
 		$this->checkData();
 
+		if ($this->value instanceof DateTime) {
+			/** @var $val string */
+			$val = $this->value->format('Y-m-d');
+		} else {
+			/** @var $val string */
+			$val = $this->value;
+		}
+
 		$html = '
 		<input type="text" class="text" autocomplete="off" value="' . EtuDev_Util_Date::formatDateOutput($this->value) . '" id="' . $this->id . '_input" name="' . $this->name . '_value" />' . '
-		<input type="hidden" value="' . $this->value . '" id="' . $this->id . '" name="' . $this->name . '" />
+		<input type="hidden" value="' . $val . '" id="' . $this->id . '" name="' . $this->name . '" />
 		';
 
 		$minDate = ($this->min_date == 'today' ? '+0d' : $this->min_date);
@@ -64,11 +72,11 @@ class EtuDev_Calendar_HTMLForm {
 			$name_input = ($this->id ? : $this->name) . '_input';
 			$calendarControl->setDatePickerId($name_input);
 
-			if (is_numeric($minDate) || strlen(trim($minDate))) {
+			if ($minDate instanceof DateTime || is_numeric($minDate) || strlen(trim($minDate))) {
 				$calendarControl->setMinDate($minDate);
 			}
 
-			if (is_numeric($maxDate) || strlen(trim($maxDate))) {
+			if ($maxDate instanceof DateTime || is_numeric($maxDate) || strlen(trim($maxDate))) {
 				$calendarControl->setMaxDate($maxDate);
 			}
 
