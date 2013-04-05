@@ -665,14 +665,17 @@ class EtuDev_Calendar_Control {
 	 * returns the script to execute the calendar control
 	 *
 	 * @param bool $withScriptWrapper
+	 * @param bool $withDocumentReadyWrapper
 	 *
 	 * @return string
 	 */
-	public function render($withScriptWrapper = true) {
+	public function render($withScriptWrapper = true, $withDocumentReadyWrapper = true) {
 		$script = $withScriptWrapper ? '<script type="text/javascript">' : '';
-		$script .= '$(document).ready(function() {
-						CalendarControlLibrary.getInstance().newCalendar("' . $this->getId() . '",' . json_encode($this->toArray()) . ').applyToDatepicker();
-					});';
+		$script .= $withDocumentReadyWrapper ? "$(document).ready(function() { \n" : '';
+
+		$script .= 'CalendarControlLibrary.getInstance().newCalendar("' . $this->getId() . '",' . json_encode($this->toArray()) . ').applyToDatepicker();';
+
+		$script .= $withDocumentReadyWrapper ? "\n});';" : '';
 		$script .= $withScriptWrapper ? '</script>' : '';
 		return $script;
 	}

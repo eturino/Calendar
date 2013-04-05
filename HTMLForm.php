@@ -82,11 +82,13 @@ class EtuDev_Calendar_HTMLForm {
 
 			$calendarControl->addHourStatusOfDateStatus();
 
-			$html .= $calendarControl->render(true);
+			$calscript = $calendarControl->render(false, false);
+		} else {
+			$calscript = '';
 		}
 
 		$html .= '
-		<script type="text/javascript">$(document).ready(function() {$("#' . $this->id . '_input").datepicker({ showButtonPanel: true, showOn: "focus", dateFormat: "' . str_replace(' ', EtuDev_Util_Date::getFormatInputSeparator(), static::$formats[EtuDev_Util_Date::getFormatInput()]) . '", altField: "#' . $this->id . '", altFormat: "yy-mm-dd", changeYear: true, changeMonth: true, onClose: function(dateText, int) { if($("#' . $this->id . '_input").val() == "") { $("#' . $this->id . '").val(""); } } }); }); </script>';
+		<script type="text/javascript">$(document).ready(function() {$("#' . $this->id . '_input").datepicker({ showButtonPanel: true, showOn: "focus", dateFormat: "' . str_replace(' ', EtuDev_Util_Date::getFormatInputSeparator(), static::$formats[EtuDev_Util_Date::getFormatInput()]) . '", altField: "#' . $this->id . '", altFormat: "yy-mm-dd", changeYear: true, changeMonth: true, onClose: function(dateText, int) { if($("#' . $this->id . '_input").val() == "") { $("#' . $this->id . '").val(""); } } }); ' . $calscript . '}); </script>';
 
 
 		return $html;
